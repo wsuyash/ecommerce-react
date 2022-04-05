@@ -6,7 +6,7 @@ import Cart from "./Cart";
 
 const App = () => {
   return (
-    <div className="App p-2 border-2 border-red-500">
+    <div className="App p-2">
       <Navbar />
       <Routes>
 	<Route path="/" element={<Products />} />

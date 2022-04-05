@@ -18,12 +18,12 @@ const Products = () => {
     getProducts();
   }, []);
 
-  console.log(products);
-
   return (
-    <div className="Products p-2 border-2 border-green-500">
-      <Product />
-    </div>
+    <ul className="Products my-8 px-4">
+      { products.map((product, index) => (
+	<Product product={product} key={index} />
+      )) }
+    </ul>
   );
 }
 
