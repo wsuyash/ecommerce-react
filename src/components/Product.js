@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { updateProduct, deleteProduct } from "../features/products/productsSlice";
+import { addToCart } from "../features/cart/cartSlice";
 
 const Product = (props) => {
+  const { from } = props;
   const dispatch = useDispatch();
   const { product } = props;
   const [edit, setEdit] = useState(() => false);
@@ -57,6 +59,10 @@ const Product = (props) => {
     dispatch(deleteProduct(id));
   }
 
+  const handleAddToCart = () => {
+    dispatch(addToCart(product));
+  }
+
   return (
     <li className="Product flex justify-between my-2 p-4 border-2 border-blue-500">
       <div className="product-left flex flex-col justify-evenly items-start gap-4 grow">
@@ -78,9 +84,9 @@ const Product = (props) => {
 	  <p>{stars}</p> 
 	) }
       </div>
-      <div className="product-right w-1/2 flex flex-col justify-between items-end">
+      <div className="product-right w-1/2 flex flex-col justify-between items-end gap-2">
 	{ edit ? (
-	  <input className="block p-2 border-2 border-gray-500" type="text" placeholder="Description" value={description} onChange={(e) => setDescription(() => e.target.value) } />
+	  <textarea className="block p-2 border-2 border-gray-500" name="description" id="description" value={description} onChange={(e) => setDescription(() => e.target.value) } cols="30" rows="10"></textarea>
 	) : (
 	  <p className="text-gray-700 break-words">{product.description}</p> 
 	) }
@@ -92,9 +98,13 @@ const Product = (props) => {
 	    </>
 	  ) : (
 	    <>
-	      <button><i className='fa-solid fa-cart-plus text-xl text-green-500'></i></button>
-	      <button onClick={onEdit}><i className='fa-solid fa-edit text-xl text-blue-500'></i></button>
-	      <i className='fa-solid fa-trash text-xl text-red-500 hover:cursor-pointer' id={product.id} onClick={handleDelete}></i>
+	      { from === "cart" ? (null) : (
+		<>
+		  <button onClick={handleAddToCart}><i className='fa-solid fa-cart-plus text-xl text-green-500'></i></button>
+	      	  <button onClick={onEdit}><i className='fa-solid fa-edit text-xl text-blue-500'></i></button>
+	      	  <i className='fa-solid fa-trash text-xl text-red-500 hover:cursor-pointer' id={product.id} onClick={handleDelete}></i>
+		</>
+	      ) }
 	    </>
 	  ) }
 	</div>

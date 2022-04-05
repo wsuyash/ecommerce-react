@@ -1,8 +1,15 @@
+import { useSelector } from "react-redux";
+import Product from "./Product";
+
 const Cart = () => {
+  const items = useSelector((state) => state.cart.items);
+
   return (
-    <div className="Cart p-2 border-2 border-pink-500">
-      <h1 className="text-3xl font-bold">This is Cart</h1>
-    </div>
+    <ul className="Cart p-2">
+      { items.map((item, index) => (
+	<Product product={item} key={index} from="cart" />
+      ))}
+    </ul>
   );
 }
 

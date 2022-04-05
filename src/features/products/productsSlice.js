@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  allProducts: []
+  allProducts: [],
+  sortedProducts: []
 }
 
 export const productsSlice = createSlice({
@@ -18,10 +19,13 @@ export const productsSlice = createSlice({
     deleteProduct: (state, action) => {
       const index = state.allProducts.findIndex((product) => product.id === parseInt(action.payload));
       state.allProducts.splice(index, 1);
+    },
+    setSortedProducts: (state, action) => {
+      state.sortedProducts = action.payload;
     }
   }
 });
 
-export const { setProducts, updateProduct, deleteProduct } = productsSlice.actions; 
+export const { setProducts, updateProduct, deleteProduct, setSortedProducts } = productsSlice.actions; 
 
 export default productsSlice.reducer;
