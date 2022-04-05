@@ -20,7 +20,7 @@ const Products = () => {
 
   return (
     <ul className="Products my-8 px-4">
-      { products.map((product, index) => (
+      { products && products.map((product, index) => (
 	<Product product={product} key={index} />
       )) }
     </ul>
