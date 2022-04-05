@@ -14,10 +14,14 @@ export const productsSlice = createSlice({
     updateProduct: (state, action) => {
       const index = state.allProducts.findIndex((product) => product.id === parseInt(action.payload.id));
       state.allProducts[index] = action.payload;
+    },
+    deleteProduct: (state, action) => {
+      const index = state.allProducts.findIndex((product) => product.id === parseInt(action.payload));
+      state.allProducts.splice(index, 1);
     }
   }
 });
 
-export const { setProducts, updateProduct } = productsSlice.actions; 
+export const { setProducts, updateProduct, deleteProduct } = productsSlice.actions; 
 
 export default productsSlice.reducer;

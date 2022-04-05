@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { updateProduct } from "../features/products/productsSlice";
+import { updateProduct, deleteProduct } from "../features/products/productsSlice";
 
 const Product = (props) => {
   const dispatch = useDispatch();
@@ -48,6 +48,15 @@ const Product = (props) => {
     setEdit((prev) => !prev);
   }
 
+  const handleDelete = async (e) => {
+    const id = parseInt(e.target.id);
+    await fetch(`/wsuyash/fake-db/products/${id}`, {
+      method: 'DELETE'
+    });
+
+    dispatch(deleteProduct(id));
+  }
+
   return (
     <li className="Product flex justify-between my-2 p-4 border-2 border-blue-500">
       <div className="product-left flex flex-col justify-evenly items-start gap-4 grow">
@@ -85,7 +94,7 @@ const Product = (props) => {
 	    <>
 	      <button><i className='fa-solid fa-cart-plus text-xl text-green-500'></i></button>
 	      <button onClick={onEdit}><i className='fa-solid fa-edit text-xl text-blue-500'></i></button>
-	      <button><i className='fa-solid fa-trash text-xl text-red-500'></i></button>
+	      <i className='fa-solid fa-trash text-xl text-red-500 hover:cursor-pointer' id={product.id} onClick={handleDelete}></i>
 	    </>
 	  ) }
 	</div>
