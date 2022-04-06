@@ -10,16 +10,20 @@ const Product = (props) => {
   const [edit, setEdit] = useState(() => false);
   const [name, setName] = useState(() => "");
   const [price, setPrice] = useState(() => 0);
-  const [rating, setRating] = useState(() => "");
+  const [rating, setRating] = useState(() => 0);
   const [description, setDescription] = useState(() => "");
 
-  const stars = [];
-  for (let i = 0; i < product.rating; i++) {
-    stars.push(<i className='fa-solid fa-star text-yellow-500' key={i}></i>);
+  let stars = [];
+  const createStars = () => {
+    for (let i = 0; i < product.rating; i++) {
+      stars.push(<i className='fa-solid fa-star text-yellow-500' key={i}></i>);
+    }
+    for (let i = product.rating; i < 5; i++) {
+      stars.push(<i className='fa-solid fa-star text-gray-300' key={i}></i>);
+    }
   }
-  for (let i = product.rating; i < 5; i++) {
-    stars.push(<i className='fa-solid fa-star text-gray-300' key={i}></i>);
-  }
+  createStars();
+
 
   const onEdit = () => {
     setName(() => product.name);
@@ -30,6 +34,10 @@ const Product = (props) => {
   }
 
   const handleSave = async (e) => {
+    if (!name || !price || !rating || !description) {
+      return;
+    }
+
     const id = parseInt(e.target.id);
     const response = await fetch(`/wsuyash/fake-db/products/${id}`, {
       method: 'PUT',
@@ -68,9 +76,9 @@ const Product = (props) => {
       <div className="product-left flex flex-col justify-evenly items-start gap-4 grow">
 	  { edit ? (
 	    <div>
-	        <input className="block p-2 border-2 border-gray-500" type="text" placeholder="Name" value={name} onChange={(e) => setName(() => e.target.value) } />
+	        <input className="block p-2 border-2 border-gray-500" type="text" placeholder="Name" value={name} onChange={(e) => setName(() => e.target.value) } required />
 		<br />
-		<input className="block p-2 border-2 border-gray-500" type="number" placeholder="Price" value={price} onChange={(e) => setPrice(() => e.target.value) } />
+		<input className="block p-2 border-2 border-gray-500" type="number" placeholder="Price" min="0" value={price} onChange={(e) => setPrice(() => e.target.value) } required />
 	    </div>
 	  ) : (
 	    <div>
@@ -79,14 +87,14 @@ const Product = (props) => {
 	    </div>
 	  )}
 	{ edit ? (
-	  <input className="block p-2 border-2 border-gray-500" type="number" min="0" max="5" placeholder="Rating" value={rating} onChange={(e) => setRating(() => e.target.value) } />
+	  <input className="block p-2 border-2 border-gray-500" type="number" min="0" max="5" placeholder="Rating" value={rating} onChange={(e) => setRating(() => e.target.value) } required />
 	) : (
 	  <p>{stars}</p> 
 	) }
       </div>
       <div className="product-right w-1/2 flex flex-col justify-between items-end gap-2">
 	{ edit ? (
-	  <textarea className="block p-2 border-2 border-gray-500" name="description" id="description" value={description} onChange={(e) => setDescription(() => e.target.value) } cols="30" rows="10"></textarea>
+	  <textarea className="block p-2 border-2 border-gray-500" name="description" id="description" value={description} onChange={(e) => setDescription(() => e.target.value) } cols="30" rows="10" required></textarea>
 	) : (
 	  <p className="text-gray-700 break-words">{product.description}</p> 
 	) }
