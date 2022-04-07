@@ -83,7 +83,7 @@ const Product = (props) => {
 					</div>
 				) : (
 					<div>
-						<Link to={"/products/" + product.id}><p className="font-bold">{product.name}</p></Link>
+						<Link to={"/products/" + product.id}><p className="font-bold hover:text-blue-500">{product.name}</p></Link>
 						<p className="text-gray-500">₹{product.price}</p>
 					</div>
 				)}
@@ -97,7 +97,7 @@ const Product = (props) => {
 				{edit ? (
 					<textarea className="block p-2 border-2 border-gray-500" name="description" id="description" value={description} onChange={(e) => setDescription(() => e.target.value)} cols="30" rows="10" required></textarea>
 				) : (
-					<p className="text-gray-700 break-words">{product.description}</p>
+					<p className="max-h-60 text-gray-700 break-words overflow-y-scroll no-scrollbar">{product.description}</p>
 				)}
 				<div className="flex justify-end items-center gap-4">
 					{edit ? (

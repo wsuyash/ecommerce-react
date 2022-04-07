@@ -36,12 +36,12 @@ const ProductDetail = () => {
 	}
 
 	return (
-		<div className="ProductDetail w-1/4 h-min py-2 flex flex-col justify-start items-center gap-2 absolute top-0 bottom-0 right-0 left-0 m-auto border-2 border-red-500">
+		<div className="ProductDetail w-1/4 h-min p-2 flex flex-col justify-start items-center gap-4 absolute top-0 bottom-0 right-0 left-0 m-auto">
 			<h1 className="text-3xl font-bold">{product.name}</h1>
-			<p>{product.description}</p>
-			<p>₹{product.price}</p>
+			<p className="max-h-80 break-words overflow-y-scroll no-scrollbar">{product.description}</p>
+			<p className="text-gray-700">₹{product.price}</p>
 			<p>{stars}</p>
-			<button className="px-2 py-1 text-white bg-green-500 hover:bg-green-700" onClick={handleAddToCart}><i className='fa-solid fa-cart-plus'></i>  Add To Cart</button>
+			<button className="px-2 py-1 text-white bg-green-500 hover:bg-green-700" onClick={handleAddToCart}><i className='fa-solid fa-cart-plus'></i> Add To Cart</button>
 		</div>
 	);
 }
