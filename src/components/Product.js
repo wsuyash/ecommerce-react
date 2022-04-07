@@ -83,7 +83,7 @@ const Product = (props) => {
 					</div>
 				) : (
 					<div>
-						<Link to={"/products/"+product.id}><p className="font-bold">{product.name}</p></Link>
+						<Link to={"/products/" + product.id}><p className="font-bold">{product.name}</p></Link>
 						<p className="text-gray-500">₹{product.price}</p>
 					</div>
 				)}

@@ -26,12 +26,12 @@ export const productsSlice = createSlice({
 			const index = state.allProducts.findIndex((product) => product.id === parseInt(action.payload));
 			state.allProducts.splice(index, 1);
 		},
-		getAProduct: (state, action) => {
-			state.product = state.allProducts.filter((p) => p.id === parseInt(action.payload))[0];
+		setProduct: (state, action) => {
+			state.product = action.payload;
 		}
 	}
 });
 
-export const { setProducts, updateProduct, deleteProduct, getAProduct } = productsSlice.actions;
+export const { setProducts, updateProduct, deleteProduct, setProduct } = productsSlice.actions;
 
 export default productsSlice.reducer;
