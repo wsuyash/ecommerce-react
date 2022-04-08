@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { updateProduct, deleteProduct } from "../features/products/productsSlice";
-import { addToCart } from "../features/cart/cartSlice";
+import { addToCart, removeFromCart } from "../features/cart/cartSlice";
 import { toast } from "react-toastify";
 
 const Product = (props) => {
@@ -99,6 +99,12 @@ const Product = (props) => {
 		toast.success('Product Added to Cart.');
 	}
 
+	const handleRemoveFromCart = () => {
+		dispatch(removeFromCart(product.id));
+		setInCart(() => false);
+		toast.success('Product Removed from Cart.');
+	}
+
 	return (
 		<li className="Product flex justify-between my-2 p-4 border-2 border-blue-500">
 			<div className="product-left flex flex-col justify-evenly items-start gap-4 grow">
@@ -134,7 +140,10 @@ const Product = (props) => {
 						</>
 					) : (
 						<>
-							{from === "cart" ? (null) : (
+							{from === "cart" ? (
+								<button className="px-2 py-1 text-white bg-red-500 hover:bg-red-600" onClick={handleRemoveFromCart}>Remove From Cart</button>
+
+							) : (
 								<>
 									{inCart ? (null) : (
 										<button onClick={handleAddToCart}><i className='fa-solid fa-cart-plus text-xl text-green-500'></i></button>

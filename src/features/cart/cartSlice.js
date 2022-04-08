@@ -13,10 +13,13 @@ export const cartSlice = createSlice({
 			if (index === -1) {
 				state.items = [action.payload, ...state.items];
 			}
+		},
+		removeFromCart: (state, action) => {
+			state.items = state.items.filter((item) => item.id !== parseInt(action.payload));
 		}
 	}
 });
 
-export const { addToCart } = cartSlice.actions;
+export const { addToCart, removeFromCart } = cartSlice.actions;
 
 export default cartSlice.reducer;

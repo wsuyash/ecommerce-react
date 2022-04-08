@@ -4,6 +4,7 @@ import cartReducer from "../features/cart/cartSlice";
 import storage from "redux-persist/lib/storage";
 import { persistReducer } from "redux-persist";
 import { combineReducers } from "@reduxjs/toolkit";
+import { FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from "redux-persist/es/constants";
 
 const persistConfig = {
 	key: "root",
@@ -19,5 +20,11 @@ const reducers = combineReducers({
 const persistReducers = persistReducer(persistConfig, reducers);
 
 export const store = configureStore({
-	reducer: persistReducers
+	reducer: persistReducers,
+	middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
 });

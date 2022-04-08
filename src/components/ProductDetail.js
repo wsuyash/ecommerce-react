@@ -57,9 +57,7 @@ const ProductDetail = () => {
 			<p className="max-h-80 break-words overflow-y-scroll no-scrollbar">{product.description}</p>
 			<p className="text-gray-700">₹{product.price}</p>
 			<p>{stars}</p>
-			{inCart ? (
-				<p>Product Already in the Cart.</p>
-			) : (
+			{inCart ? (null) : (
 				<button className="px-2 py-1 text-white bg-green-500 hover:bg-green-700" onClick={handleAddToCart}><i className='fa-solid fa-cart-plus'></i> Add To Cart</button>
 			)}
 		</div>
