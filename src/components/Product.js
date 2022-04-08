@@ -1,18 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { updateProduct, deleteProduct } from "../features/products/productsSlice";
 import { addToCart } from "../features/cart/cartSlice";
+import { toast } from "react-toastify";
 
 const Product = (props) => {
-	const { from } = props;
+	const { product, from } = props;
+	const cartItems = useSelector((state) => state.cart.items);
 	const dispatch = useDispatch();
-	const { product } = props;
 	const [edit, setEdit] = useState(() => false);
 	const [name, setName] = useState(() => "");
 	const [price, setPrice] = useState(() => 0);
 	const [rating, setRating] = useState(() => 0);
 	const [description, setDescription] = useState(() => "");
+	const [inCart, setInCart] = useState(() => false);
 
 	let stars = [];
 	const createStars = () => {
@@ -25,51 +27,76 @@ const Product = (props) => {
 	}
 	createStars();
 
+	useEffect(() => {
+		if (cartItems.findIndex((p) => p.id === parseInt(product.id)) !== -1 ) {
+			setInCart(() => true);
+		}
+	}, [cartItems, product]);
+
 
 	const onEdit = () => {
 		setName(() => product.name);
 		setPrice(() => product.price);
 		setRating(() => product.rating);
 		setDescription(() => product.description);
-		setEdit((prev) => !prev);
+		setEdit(() => true);
 	}
 
 	const handleSave = async (e) => {
 		if (!name || !price || !rating || !description) {
+			toast.info('Invalid Input.')
 			return;
 		}
 
-		const id = parseInt(e.target.id);
-		const response = await fetch(`/wsuyash/fake-db/products/${id}`, {
-			method: 'PUT',
-			body: JSON.stringify({
-				id,
-				name,
-				description,
-				price,
-				rating
-			}),
-			headers: {
-				'Content-type': 'application/json; charset=UTF-8',
-			},
-		});
+		try {
+			const id = parseInt(e.target.id);
+			const response = await fetch(`/wsuyash/fake-db/products/${id}`, {
+				method: 'PUT',
+				body: JSON.stringify({
+					id,
+					name,
+					description,
+					price,
+					rating
+				}),
+				headers: {
+					'Content-type': 'application/json; charset=UTF-8',
+				},
+			});
 
-		const data = await response.json();
-		dispatch(updateProduct(data));
-		setEdit((prev) => !prev);
+			const data = await response.json();
+
+			dispatch(updateProduct(data));
+
+			toast.success('Product Updated!')
+
+			setEdit(() => false);
+
+		} catch (error) {
+			toast.error(error.message);
+		}
 	}
 
 	const handleDelete = async (e) => {
 		const id = parseInt(e.target.id);
-		await fetch(`/wsuyash/fake-db/products/${id}`, {
-			method: 'DELETE'
-		});
 
-		dispatch(deleteProduct(id));
+		try {
+			await fetch(`/wsuyash/fake-db/products/${id}`, {
+				method: 'DELETE'
+			});
+
+			dispatch(deleteProduct(id));
+
+			toast.success('Product Deleted.');
+
+		} catch (error) {
+			toast.error(error.message);
+		}
 	}
 
 	const handleAddToCart = () => {
 		dispatch(addToCart(product));
+		toast.success('Product Added to Cart.');
 	}
 
 	return (
@@ -109,7 +136,9 @@ const Product = (props) => {
 						<>
 							{from === "cart" ? (null) : (
 								<>
-									<button onClick={handleAddToCart}><i className='fa-solid fa-cart-plus text-xl text-green-500'></i></button>
+									{inCart ? (null) : (
+										<button onClick={handleAddToCart}><i className='fa-solid fa-cart-plus text-xl text-green-500'></i></button>
+									)}
 									<button onClick={onEdit}><i className='fa-solid fa-edit text-xl text-blue-500'></i></button>
 									<i className='fa-solid fa-trash text-xl text-red-500 hover:cursor-pointer' id={product.id} onClick={handleDelete}></i>
 								</>

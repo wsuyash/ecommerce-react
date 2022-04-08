@@ -1,13 +1,16 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import { addToCart } from "../features/cart/cartSlice";
 import { setProduct } from "../features/products/productsSlice";
 
 const ProductDetail = () => {
 	const { productId } = useParams();
 	const product = useSelector((state) => state.products.product);
+	const cartItems = useSelector((state) => state.cart.items);
 	const dispatch = useDispatch();
+	const [inCart, setInCart] = useState(() => false);
 
 	let stars = [];
 	const createStars = () => {
@@ -22,17 +25,30 @@ const ProductDetail = () => {
 
 	useEffect(() => {
 		const getProduct = async () => {
-			const response = await fetch(`https://my-json-server.typicode.com/wsuyash/fake-db/products/${productId}`);	
-			const data = await response.json();
+			try {
+				const response = await fetch(`https://my-json-server.typicode.com/wsuyash/fake-db/products/${productId}`);	
+				const data = await response.json();
 
-			dispatch(setProduct(data));
+				dispatch(setProduct(data));
+
+			} catch (error) {
+				toast.error(error.message);
+			}
 		}
-
 		getProduct();
 	}, [dispatch, productId]);
 
+	useEffect(() => {
+		if (cartItems.findIndex((p) => p.id === parseInt(productId)) !== -1 ) {
+			setInCart(() => true);
+		}
+	}, [cartItems, productId]);
+
+
 	const handleAddToCart = () => {
+		setInCart(() => true);
 		dispatch(addToCart(product));
+		toast.success('Product Added to Cart.');
 	}
 
 	return (
@@ -41,7 +57,11 @@ const ProductDetail = () => {
 			<p className="max-h-80 break-words overflow-y-scroll no-scrollbar">{product.description}</p>
 			<p className="text-gray-700">₹{product.price}</p>
 			<p>{stars}</p>
-			<button className="px-2 py-1 text-white bg-green-500 hover:bg-green-700" onClick={handleAddToCart}><i className='fa-solid fa-cart-plus'></i> Add To Cart</button>
+			{inCart ? (
+				<p>Product Already in the Cart.</p>
+			) : (
+				<button className="px-2 py-1 text-white bg-green-500 hover:bg-green-700" onClick={handleAddToCart}><i className='fa-solid fa-cart-plus'></i> Add To Cart</button>
+			)}
 		</div>
 	);
 }

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { removeSort, setProducts, sortProducts } from "../features/products/productsSlice";
+import { toast } from "react-toastify";
 import Product from "./Product";
 
 const Products = () => {
@@ -17,7 +18,7 @@ const Products = () => {
 
 					dispatch(setProducts(data));
 				} catch (error) {
-					console.log(error.message);
+					toast.error(error.message);
 				}
 			}
 

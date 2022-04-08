@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { addProduct } from "../features/products/productsSlice";
 
 const AddProduct = () => {
@@ -19,26 +20,33 @@ const AddProduct = () => {
 		setDescription(() => description);
 
 		if (!name || !price || !rating || !description) {
+			toast.info('Invalid Input.');
 			return;
 		}
 
-		const response = await fetch("https://my-json-server.typicode.com/wsuyash/fake-db/products", {
-			method: 'POST',
-			body: JSON.stringify({
-				name,
-				description,
-				price,
-				rating
-			}),
-			headers: {
-				'Content-type': 'application/json; charset=UTF-8',
-			},
-		});
+		try {
+			const response = await fetch("https://my-json-server.typicode.com/wsuyash/fake-db/products", {
+				method: 'POST',
+				body: JSON.stringify({
+					name,
+					description,
+					price,
+					rating
+				}),
+				headers: {
+					'Content-type': 'application/json; charset=UTF-8',
+				},
+			});
 
-		const data = await response.json();
+			const data = await response.json();
 
-		dispatch(addProduct(data));
-		navigate("/");
+			dispatch(addProduct(data));
+			toast.success('Product Added!');
+			navigate("/");
+
+		} catch (error) {
+			toast.error(error.message);
+		}
 	}
 
 	return (
