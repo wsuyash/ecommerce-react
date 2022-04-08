@@ -32,10 +32,16 @@ export const productsSlice = createSlice({
 		addProduct: (state, action) => {
 			action.payload = { id: state.allProducts.length + 1, ...action.payload }
 			state.allProducts = [action.payload, ...state.allProducts]
+		},
+		sortProducts: (state) => {
+			state.allProducts.sort((p1, p2) => p1.price - p2.price);
+		},
+		removeSort: (state) => {
+			state.allProducts.sort((p1, p2) => p1.id - p2.id);
 		}
 	}
 });
 
-export const { setProducts, updateProduct, deleteProduct, setProduct, addProduct } = productsSlice.actions;
+export const { setProducts, updateProduct, deleteProduct, setProduct, addProduct, sortProducts, removeSort } = productsSlice.actions;
 
 export default productsSlice.reducer;

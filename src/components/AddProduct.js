@@ -1,10 +1,9 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { addProduct } from "../features/products/productsSlice";
 
 const AddProduct = () => {
-	const products = useSelector((state) => state.products.allProducts);
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const [name, setName] = useState(() => "");
