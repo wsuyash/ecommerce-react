@@ -109,7 +109,7 @@ const Product = (props) => {
 	return (
 		<li className="Product flex flex-col md:flex-row justify-center md:justify-between my-2 md:p-4 border-2 border-blue-500">
 			<div className="product-left w-full md:w-1/2 p-2 flex flex-col justify-evenly items-center md:items-start gap-4 grow">
-				<Link to={"/products/" + product.id}><img src={product.image ? product.image : '/images/default_product.png'} alt={product.name} width="64px" height="64px" /></Link>
+				<Link to={"/products/" + product.id}><img src={product.image ? product.image : 'https://cdn-icons.flaticon.com/png/512/3586/premium/3586753.png?token=exp=1649502251~hmac=9b699b3352284d818a5996e3ec795f66'} alt={product.name} width="64px" height="64px" /></Link>
 				{edit ? (
 					<div>
 						<input className="block p-2 border-2 border-gray-500" type="text" placeholder="Name" value={name} onChange={(e) => setName(() => e.target.value)} required />
