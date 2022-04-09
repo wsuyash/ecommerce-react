@@ -6,6 +6,23 @@ This is an e-commerce like app where a user can create, edit, or, delete product
 2. React-Redux
 3. Redux Toolkit
 
+# Run Project Locally
+### 1. Clone this repository and change into the directory:
+```
+git clone https://github.com/wsuyash/ecommerce-react.git
+cd ecommerce-react/
+```
+### 2. Install the dependencies:
+```
+npm install
+```
+### 3. Start the project:
+```
+npm start
+```
+
+### The project should be running at: http://localhost:3000/.
+
 # Directory Structure
 ```
 .
@@ -45,19 +62,3 @@ This is an e-commerce like app where a user can create, edit, or, delete product
 
 10 directories, 23 files 
 ```
-# Run Project Locally
-## 1. Clone this repository and change into the directory:
-```
-git clone https://github.com/wsuyash/ecommerce-react.git
-cd ecommerce-react/
-```
-## 2. Install the dependencies:
-```
-npm install
-```
-## 3. Start the project:
-```
-npm start
-```
-
-### The project should be running at: http://localhost:3000/.
