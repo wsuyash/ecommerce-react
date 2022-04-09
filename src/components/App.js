@@ -12,7 +12,7 @@ const App = () => {
 		<div className="App p-2">
 			<Navbar />
 			<Routes>
-				<Route path="/ecommerce-react" element={<Products />} />
+				<Route path="/" element={<Products />} />
 				<Route path="add" element={<AddProduct />} />
 				<Route path="cart" element={<Cart />} />
 				<Route path="products/:productId" element={<ProductDetail />} />

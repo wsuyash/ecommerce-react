@@ -24,7 +24,7 @@ const Products = () => {
 
 			getProducts();
 		}
-	}, [dispatch, products.length]);
+	}, []);
 
 	const handleSort = () => {
 		setSort(() => true)
