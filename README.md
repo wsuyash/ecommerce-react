@@ -5,6 +5,7 @@ This is an e-commerce like app where a user can create, edit, or, delete product
 1. React
 2. React-Redux
 3. Redux Toolkit
+4. Tailwind CSS
 
 # Run Project Locally
 ### 1. Clone this repository and change into the directory:
