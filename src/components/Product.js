@@ -57,7 +57,8 @@ const Product = (props) => {
 					name,
 					description,
 					price,
-					rating
+					rating,
+					image: product.image
 				}),
 				headers: {
 					'Content-type': 'application/json; charset=UTF-8',
