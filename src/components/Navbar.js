@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import logo from "../images/logo.png";
 import cart from "../images/cart.png";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
 	const items = useSelector((state) => state.cart.items);
@@ -12,7 +13,7 @@ const Navbar = () => {
 					<a href="/ecommerce-react"><img src={logo} alt="logo" /></a>
 				</div>
 				<a href="/ecommerce-react" className="text-blue-400 font-bold hover:text-blue-500">Products</a>
-				<a href="/ecommerce-react/add" className="text-blue-400 font-bold hover:text-blue-500">Add A Product</a>
+				<Link to="/ecommerce-react/add" className="text-blue-400 font-bold hover:text-blue-500">Add A Product</Link>
 			</div>
 			<div className="nav-right">
 				<a href="/cart">
