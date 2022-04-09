@@ -17,7 +17,7 @@ const App = () => {
 				<Route path="ecommerce-react/cart" element={<Cart />} />
 				<Route path="ecommerce-react/products/:productId" element={<ProductDetail />} />
 			</Routes>
-			<ToastContainer position="top-center" theme="dark" />
+			<ToastContainer autoClose={1000} position="top-center" theme="dark" />
 		</div>
 	);
 }

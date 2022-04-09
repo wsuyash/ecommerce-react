@@ -1,4 +1,6 @@
 import { useSelector } from "react-redux";
+import logo from "../images/logo.png";
+import cart from "../images/cart.png";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
@@ -8,7 +10,7 @@ const Navbar = () => {
 		<div className="Navbar flex justify-center md:justify-between items-center gap-2 py-4 px-2 md:p-6">
 			<div className="nav-left flex justify-between items-center gap-4">
 				<div className="w-16 h-16">
-					<Link to="ecommerce-react"><img src="https://cdn-icons-png.flaticon.com/512/1162/1162499.png" alt="logo" /></Link>
+					<Link to="ecommerce-react"><img src={logo} alt="logo" /></Link>
 				</div>
 				<Link className="text-blue-400 font-bold hover:text-blue-500" to="ecommerce-react">Products</Link>
 				<Link className="text-blue-400 font-bold hover:text-blue-500" to="ecommerce-react/add">Add A Product</Link>
@@ -16,7 +18,7 @@ const Navbar = () => {
 			<div className="nav-right">
 				<Link to="/ecommerce-react/cart">
 					<div className="relative">
-						<img src="https://cdn-icons-png.flaticon.com/512/1170/1170576.png" alt="cart" className="w-8 h-8" />
+						<img src={cart} alt="cart" className="w-8 h-8" />
 						{items.length > 0 ? (
 							<div className="w-5 h-5 flex justify-center items-center absolute -top-2 -right-3 text-white text-sm font-bold bg-red-500 rounded-full">{items.length}</div>
 						) : (

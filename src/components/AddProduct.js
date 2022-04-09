@@ -31,8 +31,7 @@ const AddProduct = () => {
 					name,
 					description,
 					price,
-					rating,
-					image: "https://cdn-icons.flaticon.com/png/512/3586/premium/3586753.png?token=exp=1649502251~hmac=9b699b3352284d818a5996e3ec795f66"
+					rating
 				}),
 				headers: {
 					'Content-type': 'application/json; charset=UTF-8',
