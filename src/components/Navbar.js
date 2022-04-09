@@ -5,8 +5,8 @@ const Navbar = () => {
 	const items = useSelector((state) => state.cart.items);
 
 	return (
-		<div className="Navbar flex justify-between items-center p-6">
-			<div className="nav-left flex justify-between items-center gap-4 ">
+		<div className="Navbar flex justify-center md:justify-between items-center gap-2 py-4 px-2 md:p-6">
+			<div className="nav-left flex justify-between items-center gap-4">
 				<div className="w-16 h-16">
 					<Link to="/"><img src="/images/logo.png" alt="logo" /></Link>
 				</div>

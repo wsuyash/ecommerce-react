@@ -44,7 +44,7 @@ const Products = () => {
 					<i className="fa-solid fa-circle-xmark ml-2 text-xl text-red-500 hover:cursor-pointer hover:text-red-700" onClick={handleRemoveSort}></i>
 				) : (null) }
 			</div>
-			<ul className="Products my-8 px-4">
+			<ul className="Products my-8 md:px-4">
 				{products.map((product, index) => (
 					<Product product={product} key={index} />
 				))}

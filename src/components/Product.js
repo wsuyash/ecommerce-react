@@ -106,8 +106,9 @@ const Product = (props) => {
 	}
 
 	return (
-		<li className="Product flex justify-between my-2 p-4 border-2 border-blue-500">
-			<div className="product-left flex flex-col justify-evenly items-start gap-4 grow">
+		<li className="Product flex flex-col md:flex-row justify-center md:justify-between my-2 md:p-4 border-2 border-blue-500">
+			<div className="product-left w-full md:w-1/2 p-2 flex flex-col justify-evenly items-center md:items-start gap-4 grow">
+				<Link to={"/products/" + product.id}><img src={product.image ? product.image : '/images/default_product.png'} alt={product.name} width="64px" height="64px" /></Link>
 				{edit ? (
 					<div>
 						<input className="block p-2 border-2 border-gray-500" type="text" placeholder="Name" value={name} onChange={(e) => setName(() => e.target.value)} required />
@@ -116,7 +117,7 @@ const Product = (props) => {
 					</div>
 				) : (
 					<div>
-						<Link to={"/products/" + product.id}><p className="font-bold hover:text-blue-500">{product.name}</p></Link>
+						<Link to={"/products/" + product.id}><p className="font-bold break-words hover:text-blue-500">{product.name}</p></Link>
 						<p className="text-gray-500">₹{product.price}</p>
 					</div>
 				)}
@@ -126,9 +127,9 @@ const Product = (props) => {
 					<p>{stars}</p>
 				)}
 			</div>
-			<div className="product-right w-1/2 flex flex-col justify-between items-end gap-2">
+			<div className="product-right w-full md:w-1/2 p-2 flex flex-col justify-between items-center md:items-end gap-2">
 				{edit ? (
-					<textarea className="block p-2 border-2 border-gray-500" name="description" id="description" value={description} onChange={(e) => setDescription(() => e.target.value)} cols="30" rows="10" required></textarea>
+					<textarea className="w-full block p-2 border-2 border-gray-500" name="description" id="description" value={description} onChange={(e) => setDescription(() => e.target.value)} cols="30" rows="10" required></textarea>
 				) : (
 					<p className="max-h-60 text-gray-700 break-words overflow-y-scroll no-scrollbar">{product.description}</p>
 				)}

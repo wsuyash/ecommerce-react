@@ -52,9 +52,10 @@ const ProductDetail = () => {
 	}
 
 	return (
-		<div className="ProductDetail w-1/4 h-min p-2 flex flex-col justify-start items-center gap-4 absolute top-0 bottom-0 right-0 left-0 m-auto">
+		<div className="ProductDetail lg:w-1/2 overflow-y-scroll no-scrollbar p-4 lg:p-2 flex flex-col justify-center items-center gap-4 m-auto">
 			<h1 className="text-3xl font-bold">{product.name}</h1>
-			<p className="max-h-80 break-words overflow-y-scroll no-scrollbar">{product.description}</p>
+			<img src={product.image ? product.image : '/images/default_product.png'} alt={product.name} width="256px" height="256px" />
+			<p className="h-min break-words overflow-y-scroll no-scrollbar">{product.description}</p>
 			<p className="text-gray-700">₹{product.price}</p>
 			<p>{stars}</p>
 			{inCart ? (null) : (

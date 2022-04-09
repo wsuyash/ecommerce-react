@@ -50,14 +50,14 @@ const AddProduct = () => {
 	}
 
 	return (
-		<div className="AddProduct w-1/4 h-min m-auto absolute top-0 bottom-0 right-0 left-0 flex flex-col justify-center items-center gap-8">
-			<h1 className="text-3xl text-blue-500 font-bold self-start">Add A Product</h1>
+		<div className="AddProduct w-full md:w-1/2 lg:w-1/4 h-min m-auto p-4 md:p-0 absolute top-0 bottom-0 right-0 left-0 flex flex-col justify-center items-center gap-8">
+			<h1 className="text-3xl text-blue-500 font-bold self-center">Add A Product</h1>
 			<form className="w-full flex flex-col justify-center items-center gap-4" onSubmit={handleSubmit}>
 				<input className="w-full p-2 border-2 border-gray-500" type="text" placeholder="Name" value={name} onChange={(e) => setName(() => e.target.value)} />
 				<input className="w-full p-2 border-2 border-gray-500" type="text" placeholder="Description" value={description} onChange={(e) => setDescription(() => e.target.value)} />
 				<input className="w-full p-2 border-2 border-gray-500" min="0" type="number" placeholder="Price" value={price} onChange={(e) => setPrice(() => e.target.value)} />
 				<input className="w-full p-2 border-2 border-gray-500" type="number" min="0" max="5" placeholder="Rating" value={rating} onChange={(e) => setRating(() => e.target.value)} />
-				<div className="w-1/2 flex flex-row justify-between items-center">
+				<div className="w-1/2 flex flex-row justify-between items-center gap-4">
 					<button className="w-20 px-4 py-2 bg-green-500 text-white hover:bg-green-600" type="submit">Add</button>
 					<Link to="/" ><button className="w-20 px-4 py-2 bg-red-500 text-white hover:bg-red-600">Cancel</button></Link>
 				</div>
