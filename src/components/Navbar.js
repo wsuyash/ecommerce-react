@@ -16,7 +16,7 @@ const Navbar = () => {
 				<Link to="/ecommerce-react/add" className="text-blue-400 font-bold hover:text-blue-500">Add A Product</Link>
 			</div>
 			<div className="nav-right">
-				<a href="/cart">
+				<a href="/ecommerce-react/cart">
 					<div className="relative">
 						<img src={cart} alt="cart" className="w-8 h-8" />
 						{items.length > 0 ? (
