@@ -48,7 +48,7 @@ const App = () => {
 		<div className="App p-2">
 			<Navbar />
 			<Routes>
-				<Route path="/" element={<Products products={products} handleSort={handleSort} handleRemoveSort={handleRemoveSort} sort={sort} />} />
+			<Route path="/" element={<Products products={products} handleSort={handleSort} handleRemoveSort={handleRemoveSort} sort={sort} />} />
 				<Route path="add" element={<AddProduct />} />
 				<Route path="cart" element={<Cart />} />
 				<Route path="products/:productId" element={<ProductDetail />} />
