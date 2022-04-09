@@ -17,7 +17,11 @@ const Navbar = () => {
 				<Link to="/cart">
 					<div className="relative">
 						<img src="https://cdn-icons-png.flaticon.com/512/1170/1170576.png" alt="cart" className="w-8 h-8" />
-						<div className="w-5 h-5 flex justify-center items-center absolute -top-2 -right-3 text-white text-sm font-bold bg-red-500 rounded-full">{items.length > 0 ? items.length : ''}</div>
+						{items.length > 0 ? (
+							<div className="w-5 h-5 flex justify-center items-center absolute -top-2 -right-3 text-white text-sm font-bold bg-red-500 rounded-full">{items.length}</div>
+						) : (
+							null
+						)}
 					</div>
 				</Link>
 			</div>
