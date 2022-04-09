@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { updateProduct, deleteProduct } from "../features/products/productsSlice";
 import { addToCart, removeFromCart } from "../features/cart/cartSlice";
@@ -111,7 +110,7 @@ const Product = (props) => {
 	return (
 		<li className="Product flex flex-col md:flex-row justify-center md:justify-between my-2 md:p-4 border-2 border-blue-500">
 			<div className="product-left w-full md:w-1/2 p-2 flex flex-col justify-evenly items-center md:items-start gap-4 grow">
-				<Link to={"/ecommerce-react/products/" + product.id}><img src={product.image ? product.image : noPhoto} alt={product.name} width="64px" height="64px" /></Link>
+				<a href={"/products/" + product.id}><img src={product.image ? product.image : noPhoto} alt={product.name} width="64px" height="64px" /></a>
 				{edit ? (
 					<div>
 						<input className="block p-2 border-2 border-gray-500" type="text" placeholder="Name" value={name} onChange={(e) => setName(() => e.target.value)} required />
@@ -120,7 +119,7 @@ const Product = (props) => {
 					</div>
 				) : (
 					<div>
-						<Link to={"/ecommerce-react/products/" + product.id}><p className="font-bold break-words hover:text-blue-500">{product.name}</p></Link>
+						<a href={"/products/" + product.id}><p className="font-bold break-words hover:text-blue-500">{product.name}</p></a>
 						<p className="text-gray-500">₹{product.price}</p>
 					</div>
 				)}
