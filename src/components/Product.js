@@ -50,7 +50,7 @@ const Product = (props) => {
 
 		try {
 			const id = parseInt(e.target.id);
-			const response = await fetch(`/wsuyash/fake-db/products/${id}`, {
+			const response = await fetch(`https://my-json-server.typicode.com/wsuyash/fake-db/products/${id}`, {
 				method: 'PUT',
 				body: JSON.stringify({
 					id,
@@ -82,7 +82,7 @@ const Product = (props) => {
 		const id = parseInt(e.target.id);
 
 		try {
-			await fetch(`/wsuyash/fake-db/products/${id}`, {
+			await fetch(`https://my-json-server.typicode.com/wsuyash/fake-db/products/${id}`, {
 				method: 'DELETE'
 			});
 
