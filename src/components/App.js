@@ -17,7 +17,7 @@ const App = () => {
 				<Route path="cart" element={<Cart />} />
 				<Route path="products/:productId" element={<ProductDetail />} />
 			</Routes>
-			<ToastContainer />
+			<ToastContainer position="top-center" theme="dark" />
 		</div>
 	);
 }
