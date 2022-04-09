@@ -54,7 +54,7 @@ const ProductDetail = () => {
 	return (
 		<div className="ProductDetail lg:w-1/2 overflow-y-scroll no-scrollbar p-4 lg:p-2 flex flex-col justify-center items-center gap-4 m-auto">
 			<h1 className="text-3xl font-bold">{product.name}</h1>
-			<img src={product.image ? product.image : '/images/default_product.png'} alt={product.name} width="256px" height="256px" />
+			<img src={product.image ? product.image : 'https://cdn-icons.flaticon.com/png/512/3586/premium/3586753.png?token=exp=1649502251~hmac=9b699b3352284d818a5996e3ec795f66'} alt={product.name} width="256px" height="256px" />
 			<p className="h-min break-words overflow-y-scroll no-scrollbar">{product.description}</p>
 			<p className="text-gray-700">₹{product.price}</p>
 			<p>{stars}</p>
