@@ -11,10 +11,10 @@ const Navbar = () => {
 					<Link to="ecommerce-react"><img src="https://cdn-icons-png.flaticon.com/512/1162/1162499.png" alt="logo" /></Link>
 				</div>
 				<Link className="text-blue-400 font-bold hover:text-blue-500" to="ecommerce-react">Products</Link>
-				<Link className="text-blue-400 font-bold hover:text-blue-500" to="/add">Add A Product</Link>
+				<Link className="text-blue-400 font-bold hover:text-blue-500" to="ecommerce-react/add">Add A Product</Link>
 			</div>
 			<div className="nav-right">
-				<Link to="/cart">
+				<Link to="ecommerce-react/cart">
 					<div className="relative">
 						<img src="https://cdn-icons-png.flaticon.com/512/1170/1170576.png" alt="cart" className="w-8 h-8" />
 						{items.length > 0 ? (
