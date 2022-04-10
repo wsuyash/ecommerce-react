@@ -1,7 +1,7 @@
 # E-Commerce
 This is an e-commerce like app where a user can create, edit, or, delete products and add products to the cart.
 
-### This project is hosted at: https://wsuyash.github.io/ecommerce-react/
+### This project is hosted at: https://ecommerce-react-wsuyash.vercel.app/
 
 # Tech Stack
 1. React
