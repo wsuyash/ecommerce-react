@@ -10,6 +10,7 @@ const Products = () => {
 	const [sort, setSort] = useState(() => false);
 
 	useEffect(() => {
+		dispatch(removeSort());
 		if (products.length < 1) {
 			const getProducts = async () => {
 				try {

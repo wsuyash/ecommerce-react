@@ -10,13 +10,13 @@ const Navbar = () => {
 		<div className="Navbar flex justify-center md:justify-between items-center gap-2 py-4 px-2 md:p-6">
 			<div className="nav-left flex justify-between items-center gap-4">
 				<div className="w-16 h-16">
-					<Link to="/ecommerce-react"><img src={logo} alt="logo" /></Link>
+					<Link to="/"><img src={logo} alt="logo" /></Link>
 				</div>
-				<Link to="/ecommerce-react" className="text-blue-400 font-bold hover:text-blue-500">Products</Link>
-				<Link to="/ecommerce-react/add" className="text-blue-400 font-bold hover:text-blue-500">Add A Product</Link>
+				<Link to="/" className="text-blue-400 font-bold hover:text-blue-500">Products</Link>
+				<Link to="/add" className="text-blue-400 font-bold hover:text-blue-500">Add A Product</Link>
 			</div>
 			<div className="nav-right">
-				<Link to="/ecommerce-react/cart">
+				<Link to="/cart">
 					<div className="relative">
 						<img src={cart} alt="cart" className="w-8 h-8" />
 						{items.length > 0 ? (

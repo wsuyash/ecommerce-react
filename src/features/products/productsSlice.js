@@ -37,7 +37,7 @@ export const productsSlice = createSlice({
 			state.allProducts.sort((p1, p2) => p1.price - p2.price);
 		},
 		removeSort: (state) => {
-			state.allProducts.sort((p1, p2) => p1.id - p2.id);
+			state.allProducts.sort((p1, p2) => p2.id - p1.id);
 		}
 	}
 });
