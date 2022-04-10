@@ -12,10 +12,10 @@ const App = () => {
 		<div className="App p-2">
 			<Navbar />
 			<Routes>
-				<Route path="/ecommerce-react" element={<Products />} />
-				<Route path="ecommerce-react/add" element={<AddProduct />} />
-				<Route path="ecommerce-react/cart" element={<Cart />} />
-				<Route path="ecommerce-react/products/:productId" element={<ProductDetail />} />
+				<Route path="/" element={<Products />} />
+				<Route path="add" element={<AddProduct />} />
+				<Route path="cart" element={<Cart />} />
+				<Route path="products/:productId" element={<ProductDetail />} />
 			</Routes>
 			<ToastContainer autoClose={500} position="top-center" theme="dark" />
 		</div>
