@@ -5,6 +5,7 @@ import { addToCart, removeFromCart } from "../features/cart/cartSlice";
 import { toast } from "react-toastify";
 
 import noPhoto from "../images/no-photo.png";
+import { Link } from "react-router-dom";
 
 const Product = (props) => {
 	const { product, from } = props;
@@ -110,7 +111,7 @@ const Product = (props) => {
 	return (
 		<li className="Product flex flex-col md:flex-row justify-center md:justify-between my-2 md:p-4 border-2 border-blue-500">
 			<div className="product-left w-full md:w-1/2 p-2 flex flex-col justify-evenly items-center md:items-start gap-4 grow">
-				<a href={"/ecommerce-react/products/" + product.id}><img src={product.image ? product.image : noPhoto} alt={product.name} width="64px" height="64px" /></a>
+				<Link to={"/ecommerce-react/products/" + product.id}><img src={product.image ? product.image : noPhoto} alt={product.name} width="64px" height="64px" /></Link>
 				{edit ? (
 					<div>
 						<input className="block p-2 border-2 border-gray-500" type="text" placeholder="Name" value={name} onChange={(e) => setName(() => e.target.value)} required />
@@ -119,7 +120,7 @@ const Product = (props) => {
 					</div>
 				) : (
 					<div>
-						<a href={"/ecommerce-react/products/" + product.id}><p className="font-bold break-words hover:text-blue-500">{product.name}</p></a>
+						<Link to={"/ecommerce-react/products/" + product.id}><p className="font-bold break-words hover:text-blue-500">{product.name}</p></Link>
 						<p className="text-gray-500">₹{product.price}</p>
 					</div>
 				)}
