@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "proxy": "https://my-json-server.typicode.com",
-	"homepage": "https://wsuyash.github.io/",
+	"homepage": "https://wsuyash.github.io/ecommerce-react",
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.1",
     "@testing-library/jest-dom": "^4.2.4",
