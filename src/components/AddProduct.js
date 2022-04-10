@@ -50,7 +50,7 @@ const AddProduct = () => {
 	}
 
 	return (
-		<div className="AddProduct md:w-1/2 lg:w-1/4 m-auto p-4 md:p-0 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col justify-center items-center gap-8">
+		<div className="AddProduct w-full md:w-1/2 lg:w-1/4 m-auto p-4 md:p-0 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col justify-center items-center gap-8">
 			<h1 className="text-3xl text-blue-500 font-bold self-center">Add A Product</h1>
 			<form className="w-full flex flex-col justify-center items-center gap-4" onSubmit={handleSubmit}>
 				<input className="w-full p-2 border-2 border-gray-500" type="text" placeholder="Name" value={name} onChange={(e) => setName(() => e.target.value)} />
