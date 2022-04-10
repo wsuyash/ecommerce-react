@@ -59,7 +59,7 @@ const AddProduct = () => {
 				<input className="w-full p-2 border-2 border-gray-500" type="number" min="0" max="5" placeholder="Rating" value={rating} onChange={(e) => setRating(() => e.target.value)} />
 				<div className="w-1/2 flex flex-row justify-between items-center gap-4">
 					<button className="w-20 px-4 py-2 bg-green-500 text-white hover:bg-green-600" type="submit">Add</button>
-					<a href="/"><button className="w-20 px-4 py-2 bg-red-500 text-white hover:bg-red-600">Cancel</button></a>
+					<a href="/ecommerce-react"><button className="w-20 px-4 py-2 bg-red-500 text-white hover:bg-red-600">Cancel</button></a>
 				</div>
 			</form>
 		</div>

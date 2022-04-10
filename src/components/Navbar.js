@@ -9,13 +9,13 @@ const Navbar = () => {
 		<div className="Navbar flex justify-center md:justify-between items-center gap-2 py-4 px-2 md:p-6">
 			<div className="nav-left flex justify-between items-center gap-4">
 				<div className="w-16 h-16">
-					<a href="/"><img src={logo} alt="logo" /></a>
+					<a href="/ecommerce-react"><img src={logo} alt="logo" /></a>
 				</div>
-				<a href="/" className="text-blue-400 font-bold hover:text-blue-500">Products</a>
-				<a href="/add" className="text-blue-400 font-bold hover:text-blue-500">Add A Product</a>
+				<a href="/ecommerce-react" className="text-blue-400 font-bold hover:text-blue-500">Products</a>
+				<a href="/ecommerce-react/add" className="text-blue-400 font-bold hover:text-blue-500">Add A Product</a>
 			</div>
 			<div className="nav-right">
-				<a href="/cart">
+				<a href="/ecommerce-react/cart">
 					<div className="relative">
 						<img src={cart} alt="cart" className="w-8 h-8" />
 						{items.length > 0 ? (
