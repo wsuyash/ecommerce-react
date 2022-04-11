@@ -24,7 +24,7 @@ npm install
 npm start
 ```
 
-### The project should be running at: http://localhost:3000/ecommerce-react.
+### The project should be running at: http://localhost:3000/
 
 * To get the original list of products after deleting products, clear your browser's Local Storage and refresh.
 
